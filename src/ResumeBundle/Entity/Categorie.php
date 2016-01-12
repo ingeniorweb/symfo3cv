@@ -3,9 +3,12 @@
 namespace ResumeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ResumeBundle\Entity\texte;
+use ResumeBundle\Entity\Texte;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Form\DataTransformerInterface;
+use Symfony\Component\Form\Exception\TransformationFailedException;
 
 /**
  * categorie
@@ -51,7 +54,7 @@ class Categorie {
         return $this;
     }
 
-    ////  extern fin
+////  extern fin
 
     /**
      * Get id
@@ -89,6 +92,7 @@ class Categorie {
      */
     public function __construct() {
         $this->textes = new \Doctrine\Common\Collections\ArrayCollection();
+//        $this->textes = $textes;
     }
 
     /**

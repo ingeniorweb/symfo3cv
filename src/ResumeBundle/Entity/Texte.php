@@ -56,6 +56,10 @@ class Texte {
      */
     protected $cat;
 
+//    public function __toString() {
+//        return strval($this->getId());
+//    }
+
     public function __construct() {
         $this->date = new \DateTime();
         $this->cat = new \Doctrine\Common\Collections\ArrayCollection();
