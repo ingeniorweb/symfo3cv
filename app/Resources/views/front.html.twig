@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resume Website Template | Home :: w3layouts</title>
+        <script src="{{ asset ('js/jquery.min.js') }}"></script>
+        <link href="{{ asset ('css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+        <link href="{{ asset ('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+        <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!---- start-smoth-scrolling---->
+        <script type="text/javascript" src="{{ asset ('js/move-top.js') }}"></script>
+        <script type="text/javascript" src="{{ asset ('js/easing.js') }}"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+                });
+            });
+        </script>
+        <!---- start-smoth-scrolling---->
+    </head>
+    <body>
+        <!------headerbg starts--------->
+        <div id="top-top" class="headerbg">
+            <!------header starts--------->
+            <div class="header">
+                <!------container starts--------->
+                <div class="container">
+                    <div class="logo">
+                        <a href="#">Resume</a>
+                    </div>
+                    <!------Navigation starts--------->
+                    <div class="nav">
+                        <ul>
+                            <li><a class="scroll" href="#about">ABOUT</a></li>
+                            <li><a class="scroll" href="#skills">SKILLS</a></li>
+                            <li><a class="scroll" href="#port">PORTFOLIO</a></li>
+                            <li><a class="scroll" href="#contact">CONTACT</a></li>
+                        </ul>
+                    </div>
+                    <!------Navigation ends-------->
+                    <div class="clear"></div>
+                </div>
+                <!------container ends--------->
+            </div>
+            <!------header ends--------->
+            <!------Banner starts--------->
+            <div class="banner">
+                <div class="container">
+                    <div class="banner-info">
+                        <div class="bannerlogo">
+                            <img src="{{ asset ('images/diamond.png') }}">
+                        </div>
+                        <div class="bannerhead">
+                            <h2>
+                            {% block txt01 %}{% endblock %}
+                            My name is <span>John Deo</span></h2>
+                        <h3>PHP Programmer</h3>
+                        <p>
+                        {% block txt02 %}{% endblock %}
+                    </p>
+                    <a class="downarrow scroll" href="#about"><span> </span></a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <!------Banner ends-------->
+</div>
+<!------Headerbg ends-------->
+<!------Content starts--------->
+<div class="content">
+    <!------About starts--------->
+    <div id="about" class="about">
+        <div class="container">
+            <div class="header-section text-center">
+                <h2><span> </span>ABOUT<span> </span></h2>
+            </div>
+            <span><p>{% block body %}
+
+                    {% endblock %}
+                    </p></span>
+                {% block lastexp %}{% endblock %}
+
+
+
+            <a class="arrow scroll" href="#skills"><span> </span></a>
+        </div>
+    </div>
+    <!------About Ends--------->
+
+    <!------SKILLS Starts--------->
+    <div id="skills" class="skills">
+        <div class="container">
+            <div class="skills-grids">
+                <div class="skill-section text-center">
+                    <h2><span> </span>SKILLS<span> </span></h2>
+                </div>
+                <div class="services_grids">
+                    <div id="canvas">
+
+                        <div class="skill-grids text-center">
+                        {% block skills %}{% endblock %}
+
+                    </div>
+                </div>
+            </div>
+            <!--   script cacul % cercle skills -->
+            <script type="text/javascript" src="{{ asset ('js/circles.js') }}"></script>
+            <script>
+                var colors = [
+                    ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A']
+                ];
+                for (var i = 1; i <= 5; i++) {
+                    var child = document.getElementById('circles-' + i),
+                            percentage = 50 + (i * 10);
+
+                    Circles.create({
+                        id: child.id,
+                        percentage: percentage,
+                        radius: 80,
+                        width: 15,
+                        number: percentage / 10,
+                        text: '%',
+                        colors: colors[i - 1]
+                    });
+                }
+
+            </script>
+
+            <!--/-->
+        </div>
+    </div>
+    <a class="down scroll" href="#port"><span> </span></a>
+</div>
+<!------SKILLS Ends--------->
+<!------PORTFOLIO Starts--------->
+<div id="port" class="Portfolio">
+    <div class="Portfolio-section text-center">
+        <h2><span> </span>PORTFOLIO<span> </span></h2>
+    </div>
+    <div class="container">
+        <div class="portfolio-grids">
+
+        {% block exp %}{% endblock %}
+        <div class="clear"> </div>
+
+    </div>
+    <a class="portdown scroll" href="#contact"><span> </span></a>	  
+</div>
+</div>
+</div>
+<!------Content Ends-------->
+<!------FOOTER Starts----------->
+<div  id="contact" class="footer">
+    <div class="container">
+        <div class="contact-section text-center">
+            <h2><span> </span>CONTACT<span> </span></h2>
+        </div>
+        <div class="row"> 
+            <div class="col-md-6">
+                <div class="footer-left">
+                    <div class="social-icons">
+                        <a href="#"><img src="{{ asset ('images/in.png') }}"></a>
+                        <a href="#"><img src="{{ asset ('images/twt.png') }}"></a>
+                        <a href="#"><img src="{{ asset ('images/fb.png') }}"></a>
+                    </div>
+                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
+                        quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh
+                        id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+                        Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
+                        ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="footer-right">
+                    <div class="form">
+                        <form>
+                            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'Name';
+                                    }">
+                            <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'E-mail';
+                                    }">
+                            <textarea rows="2" cols="70" onfocus="if (this.value == 'Your Message')
+                                        this.value = '';" onblur="if (this.value == '')
+                                                    this.value = 'Your Message';" >Your Message</textarea>
+                            <div class="clear"> </div>
+                            <input type="submit" value="SEND"> 
+                        </form>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p class="copy-right"> &copy; 2014 Resume. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+            </div>
+        </div>
+    </div>
+    <a class="up scroll" href="#top-top"><span> </span></a>  
+</div>
+</body>
+</html>

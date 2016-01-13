@@ -23,6 +23,9 @@ framework:
     templating:
         engines: ['twig']
         #assets_version: SomeVersionScheme
+        form:
+            resources:
+                - 'FrameworkBundle:FormTable'
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -38,6 +41,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'form_table_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:

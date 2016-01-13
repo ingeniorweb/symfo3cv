@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TexteType extends AbstractType {
 
@@ -20,7 +21,9 @@ class TexteType extends AbstractType {
                 ->add('description')
                 ->add('image')
                 ->add('cat', EntityType::class, array('class' => 'ResumeBundle:Categorie',
-                    'choice_label' => 'nom', 'multiple' => true, 'expanded' => true))
+                    'choice_label' => function ($category) {
+                        return $category->getNom();
+                    }, 'multiple' => true, 'expanded' => true))
         ;
     }
 

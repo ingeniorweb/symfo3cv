@@ -1,0 +1,48 @@
+{% extends 'front.html.twig' %}
+
+
+{% block txt01 %}**** texte 01 ****{% endblock %}
+
+{% block txt02 %}**** texte 02 **** Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+    lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.{% endblock %}
+
+    {% block body %}
+        **** BODY block HOME PAGE **** 
+        Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+        lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.
+    {% endblock %}
+
+    {% block lastexp %}**** dernieres exp ****
+        <div class="years">	 
+            <h4><b>2009</b></h4>
+            <span><h4>Project Manager Web Center</h4></span>
+            <p><i>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin,
+                    lorem quis bibendum auctor,nisi elit consequat ipsum,nec sagittis sem nibh id elit.Duis.</i></p>
+        </div> 
+
+
+    {% endblock %}
+
+
+    {% block skills %}
+        <div class="col-md-3">	
+            <div class="skill-grid">
+                <div class="circle" id="circles-1"></div>									
+                <h3>MySql</h3>	
+            </div>								  
+        </div>
+
+        <div class="clearfix"> </div>
+    {% endblock %}
+
+    {% block exp %}
+
+        <div class="portfolio-grid col-md-4">
+            <a href="#"><img src="{{ asset ('images/1.jpg') }}"></a>
+            <p>*** portofolio **** Proin gravida nibh vel velit auctor aliquet.
+                Aenean sollicitudin, lorem quis bibendum</p>
+            <a class="rightarrow" href="#"><span> </span></a>
+        </div>
+
+
+    {% endblock %}
