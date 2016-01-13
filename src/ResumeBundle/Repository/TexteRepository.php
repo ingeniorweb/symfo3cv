@@ -9,5 +9,34 @@ namespace ResumeBundle\Repository;
  * repository methods below.
  */
 class TexteRepository extends \Doctrine\ORM\EntityRepository {
-    
+
+    public function getTxtByCat($cat) {
+
+        $qb = $this->createQueryBuilder("t");
+        $qb->where('t.cat = :cat')
+                ->setParameter(1, $cat);
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
+    public function getTxtByCat2($cat) {
+
+
+        $qb = $this->createQueryBuilder("t")
+                ->Join('t.cat', 'c')
+                ->where('c = :cat');
+
+//        $qb = $this
+//                ->createQueryBuilder('a')
+//                ->leftJoin('a.applications', 'app')
+//                ->addSelect('app')
+//        ;
+
+
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
 }
