@@ -13,59 +13,86 @@ use ResumeBundle\Entity\Texte;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/index")
+     * @Route("/index", name="symfony")
      */
     public function indexAction() {
         return $this->render('ResumeBundle:Default:index.html.twig');
     }
 
     /**
-     * @Route("/test")
+     * @Route("/test", name="testtemplate")
      */
     public function testAction() {
         return $this->render('default/test.html.twig');
     }
 
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
     public function homeAction(Request $request) {
 
-//        $nbParPage = Article::NB_ARTICLE;
+
         ///  LES TEXTES //////////////
         $cat = 4;
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('ResumeBundle:Categorie');
-//        $textes = $rep->getTxtByCat($cat);
 
         $sect = new Categorie;
         $sect = $rep->find($cat);
         $textes = $sect->getTextes();
+        ///////  FIN TEXTES  ///////////////////////////
+        //////***********************////////////
+        /////   LES 3 DERNIERES EXP + EXP ///////////////////
 
 
 
-//        $nbarticles = count($articles);
-//        $nombrePage = ceil($nbarticles / $nbParPage);
-//        $extrait = $this->get('app.extrait');
-//        foreach ($articles as $key => $article) {
-//            $text = $extrait->genereExtrait($article->getcontenu());
-//            $article->setExtrait($text);
-//        }
-        return $this->render('default/home.html.twig', array('textes' => $textes));
+        $rep = $em->getRepository('ResumeBundle:Experience');
+        $exps = $rep->getLastExp();
+
+        ///////////  FIN 3 EXP + EXP  ///////////////
+        //////***********************////////////
+        /////     SKILLS    //////////////////
+        $rep = $em->getRepository('ResumeBundle:Skill');
+        $skills = $rep->findAll();
+        ////  FIN SKILLS  ////////////////
+
+        return $this->render('default/home.html.twig', array('textes' => $textes, 'exps' => $exps, 'skills' => $skills));
+    }
+
+    /**
+     * @Route("/{id}", name="detail", requirements={"id":"\d+"})
+     */
+    public function detailAction(Request $request, $id) {
+
+
+        ///  LES TEXTES //////////////
+        $cat = 4;
+        $em = $this->getDoctrine()->getManager();
+        $rep = $em->getRepository('ResumeBundle:Categorie');
+
+        $sect = new Categorie;
+        $sect = $rep->find($cat);
+        $textes = $sect->getTextes();
+        ///////  FIN TEXTES  ///////////////////////////
+        //////***********************////////////
+        /////   L' EXP ///////////////////
 
 
 
+        $rep = $em->getRepository('ResumeBundle:Experience');
+        $exp = $rep->findOneById($id);
 
-        $extrait = $this->setExtrait(text);
+        ///////////  FIN EXP  ///////////////
+        //////***********************////////////
+        /////     SKILLS    //////////////////
+        $rep = $em->getRepository('ResumeBundle:Skill');
+
+        $skills = $exp->getSkills();
+        ////  FIN SKILLS  ////////////////
 
 
-//$extrait = $this->get('CatalogueBundle.crop');
-//        $texte = $extrait->cropTexte($article->getContenu());
-//        $article->setExtrait($texte);
-//        return $this->render('blog/index.html.twig', array('articles' => $articles, 'page' => $page,
-//                    'nombrePage' => ceil(count($articles) / $nbParPage)));
-//        return $this->render('default/home.html.twig');
-        ///////  FIN TEXTES  /////////////////////////////////
+
+        return $this->render('default/experience.html.twig', array('textes' => $textes, 'exp' => $exp, 'skills' => $skills));
     }
 
 }

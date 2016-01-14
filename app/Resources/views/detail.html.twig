@@ -34,10 +34,10 @@
                     <!------Navigation starts--------->
                     <div class="nav">
                         <ul>
-                            <li><a class="scroll" href="{{ path ('home') }}#about">ABOUT</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}#skills">SKILLS</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}#port">PORTFOLIO</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}#contact">CONTACT</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">ABOUT</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">SKILLS</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">PORTFOLIO</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">CONTACT</a></li>
 
                             {% if app.user == NULL %}
                                 <li><a href="{{ path ('fos_user_security_login') }}">LOGIN</a></li>
@@ -73,7 +73,7 @@
                         <p>
                         {% block txt02 %}{% endblock %}
                     </p>
-                    <a class="downarrow scroll" href="{{ path ('home') }}#about"><span> </span></a>
+                    <a class="downarrow scroll" href="{{ path ('home') }}#port"><span> </span></a>
                 </div>
             </div>
             <div class="clear"></div>
@@ -84,86 +84,26 @@
 <!------Headerbg ends-------->
 <!------Content starts--------->
 <div class="content">
-    <!------About starts--------->
-    <div id="about" class="about">
-        <div class="container">
-            <div class="header-section text-center">
-                <h2><span> </span>ABOUT<span> </span></h2>
-            </div>
-            <span><p>{% block body %}
 
-                    {% endblock %}
-                    </p></span>
-                {% block lastexp %}{% endblock %}
-
-
-
-            <a class="arrow scroll" href="{{ path ('home') }}#skills"><span> </span></a>
+    <!------PORTFOLIO Starts--------->
+    <div id="port" class="Portfolio">
+        <div class="Portfolio-section text-center">
+            <h2><span> </span>CV<span> </span></h2>
         </div>
-    </div>
-    <!------About Ends--------->
-
-    <!------SKILLS Starts--------->
-    <div id="skills" class="skills">
         <div class="container">
-            <div class="skills-grids">
-                <div class="skill-section text-center">
-                    <h2><span> </span>SKILLS<span> </span></h2>
-                </div>
-                <div class="services_grids">
-                    <div id="canvas">
+            <div class="portfolio-grids">
 
-                        <div class="skill-grids text-center">
-                        {% block skills %}{% endblock %}
+            {% block exp %}{% endblock %}
+            <div class="clear"> </div>
 
-                    </div>
-                </div>
-            </div>
-            <!--   script cacul % cercle skills -->
-            <script type="text/javascript" src="{{ asset ('js/circles.js') }}"></script>
-            <script>
-                var colors = [
-                    ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A'], ['#181115', '#30222A']
-                ];
-                for (var i = 1; i <= 5; i++) {
-                    var child = document.getElementById('circles-' + i),
-                            percentage = i;
-
-                    Circles.create({
-                        id: child.id,
-                        percentage: percentage,
-                        radius: 80,
-                        width: 15,
-                        number: percentage,
-                        text: '%',
-                        colors: colors[i - 1]
-                    });
-                }
-
-            </script>
-
-            <!--/-->
         </div>
-    </div>
-    <a class="down scroll" href="#port"><span> </span></a>
-</div>
-<!------SKILLS Ends--------->
-<!------PORTFOLIO Starts--------->
-<div id="port" class="Portfolio">
-    <div class="Portfolio-section text-center">
-        <h2><span> </span>CV<span> </span></h2>
-    </div>
-    <div class="container">
-        <div class="portfolio-grids">
-
-        {% block exp %}{% endblock %}
-        <div class="clear"> </div>
+        <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
 
     </div>
-    <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
 </div>
+
 </div>
-</div>
+
 <!------Content Ends-------->
 <!------FOOTER Starts----------->
 <div  id="contact" class="footer">

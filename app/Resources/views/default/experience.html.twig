@@ -1,4 +1,4 @@
-{% extends 'front.html.twig' %}
+{% extends 'detail.html.twig' %}
 
 
 {% block txt01 %}
@@ -20,27 +20,6 @@
     {% endfor %}
 {% endblock %}
 
-{% block body %}
-    {% for texte in textes %}
-        {% if texte.titre == 'body' %}
-            {{ texte.description }}
-        {% endif %}
-    {% endfor %}
-{% endblock %}
-
-{% block lastexp %}
-
-    {% for exp in exps %}
-        <div class="years">	 
-            <h4><b>{{ exp.debut|date('m-Y') }} - {{ exp.fin|date('m-Y') }}</b></h4>
-            <span><h4>{{ exp.entreprise }}</h4></span>
-            <p><i>{{ exp.description }}</i></p>
-        </div> 
-    {% endfor %}
-
-{% endblock %}
-
-
 {% block skills %}
 
     {% for skill in skills %}
@@ -56,13 +35,26 @@
 {% endblock %}
 
 {% block exp %}
-    {% for exp in exps %}
-        <div class="portfolio-grid col-md-4">
-            <a href="#"><img src="{{ asset ('images/1.jpg') }}"></a>
-            <p>{{ exp.description }}</p>
-            <a class="rightarrow" href="#"><span> </span></a>
+
+    <div class="portfolio-grid col-md-12">
+        <a href="#"><img src="{{ asset ('images/1.jpg') }}"></a>
+        <p><h2>{{ exp.entreprise }}</h2></p>
+    <p>{{ exp.debut|date('m-Y') }} / {{ exp.fin|date('m-Y') }}</p>
+    <p>{{ exp.description }}</p>
+
+    {% for skill in skills %}
+
+        <div class="col-md-3">	
+
+
+            <h2>{{ skill.nom }}</h2>	
+
         </div>
     {% endfor %}
+    <div class="clearfix"> </div>
+
+</div>
+
 {% endblock %}
 
 
