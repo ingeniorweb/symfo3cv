@@ -38,22 +38,24 @@
 
     <div class="portfolio-grid col-md-12">
         <a href="#"><img src="{{ asset ('images/1.jpg') }}"></a>
-        <p><h2>{{ exp.entreprise }}</h2></p>
-    <p>{{ exp.debut|date('m-Y') }} / {{ exp.fin|date('m-Y') }}</p>
-    <p>{{ exp.description }}</p>
 
-    {% for skill in skills %}
+        <span><h3>{{ exp.poste }}</h4></span>
+        <span><h2>{{ exp.entreprise }}</h3></span>
+        <p>{{ exp.debut|date('m-Y') }} / {{ exp.fin|date('m-Y') }}</p>
+        <p>{{ exp.description }}</p>
 
-        <div class="col-md-3">	
+        {% for skill in skills %}
+
+            <div class="col-md-3">	
 
 
-            <h2>{{ skill.nom }}</h2>	
+                <h2>{{ skill.nom }}</h2>	
 
-        </div>
-    {% endfor %}
-    <div class="clearfix"> </div>
+            </div>
+        {% endfor %}
+        <div class="clearfix"> </div>
 
-</div>
+    </div>
 
 {% endblock %}
 

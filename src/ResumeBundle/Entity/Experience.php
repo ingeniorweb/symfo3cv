@@ -31,6 +31,13 @@ class Experience {
     private $entreprise;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="poste", type="string", length=255)
+     */
+    private $poste;
+
+    /**
      * @var \DateTime
      * @Assert\DateTime()
      * @ORM\Column(name="date", type="date")
@@ -71,6 +78,13 @@ class Experience {
      * @ORM\Column(name="active", type="boolean")
      */
     private $active;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="formation", type="boolean")
+     */
+    private $formation;
 
 
 
@@ -292,4 +306,52 @@ class Experience {
         $this->skills->removeElement($skill);
     }
 
+
+    /**
+     * Set poste
+     *
+     * @param string $poste
+     *
+     * @return Experience
+     */
+    public function setPoste($poste)
+    {
+        $this->poste = $poste;
+
+        return $this;
+    }
+
+    /**
+     * Get poste
+     *
+     * @return string
+     */
+    public function getPoste()
+    {
+        return $this->poste;
+    }
+
+    /**
+     * Set formation
+     *
+     * @param boolean $formation
+     *
+     * @return Experience
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+
+        return $this;
+    }
+
+    /**
+     * Get formation
+     *
+     * @return boolean
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
 }

@@ -47,7 +47,7 @@ class DefaultController extends Controller {
 
 
         $rep = $em->getRepository('ResumeBundle:Experience');
-        $exps = $rep->getLastExp();
+        $exps = $rep->getLastExp(3);
 
         ///////////  FIN 3 EXP + EXP  ///////////////
         //////***********************////////////
@@ -93,6 +93,26 @@ class DefaultController extends Controller {
 
 
         return $this->render('default/experience.html.twig', array('textes' => $textes, 'exp' => $exp, 'skills' => $skills));
+    }
+
+    /**
+     * @Route("/cv/{skill}", name="byskill")
+     */
+    public function expBySkill(Request $request, $skill) {
+
+        $em = $this->getDoctrine()->getManager();
+        $rep = $em->getRepository('ResumeBundle:Skill');
+
+        $sect = new Skill;
+        $sect = $rep->find($skill);
+        $exp = $sect->getExperiences();
+
+
+        $skills = $exp->getSkills();
+
+        var_dump($exp);
+
+        return $this->render('default/cv.html.twig', array('experiences' => $exp, 'skills' => $skills));
     }
 
 }

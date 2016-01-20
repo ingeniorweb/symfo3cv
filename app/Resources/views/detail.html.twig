@@ -23,7 +23,7 @@
     </head>
     <body>
         <!------headerbg starts--------->
-        <div id="top-top" class="headerbg">
+        <div id="top-top" class="headerbg2">
             <!------header starts--------->
             <div class="header">
                 <!------container starts--------->
@@ -34,10 +34,10 @@
                     <!------Navigation starts--------->
                     <div class="nav">
                         <ul>
-                            <li><a class="scroll" href="{{ path ('home') }}">ABOUT</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}">SKILLS</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}">PORTFOLIO</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}">CONTACT</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">HOME</a></li>
+
+                            <li><a class="scroll" href="#port">DETAIL</a></li>
+                            <li><a class="scroll" href="#contact">CONTACT</a></li>
 
                             {% if app.user == NULL %}
                                 <li><a href="{{ path ('fos_user_security_login') }}">LOGIN</a></li>
@@ -59,97 +59,78 @@
             </div>
             <!------header ends--------->
             <!------Banner starts--------->
-            <div class="banner">
+
+            <!------Banner ends-------->
+        </div>
+        <!------Headerbg ends-------->
+        <!------Content starts--------->
+        <div class="content">
+
+            <!------PORTFOLIO Starts--------->
+            <div id="port" class="Portfolio">
+                <div class="Portfolio-section text-center">
+                    <h2><span> </span>CV<span> </span></h2>
+                </div>
                 <div class="container">
-                    <div class="banner-info">
-                        <div class="bannerlogo">
-                            <img src="{{ asset ('images/diamond.png') }}">
-                        </div>
-                        <div class="bannerhead">
-                            <h2>
-                            {% block txt01 %}{% endblock %}
-                            My name is <span>John Deo</span></h2>
-                        <h3>PHP Programmer</h3>
-                        <p>
-                        {% block txt02 %}{% endblock %}
-                    </p>
-                    <a class="downarrow scroll" href="{{ path ('home') }}#port"><span> </span></a>
-                </div>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <!------Banner ends-------->
-</div>
-<!------Headerbg ends-------->
-<!------Content starts--------->
-<div class="content">
+                    <div class="portfolio-grids">
 
-    <!------PORTFOLIO Starts--------->
-    <div id="port" class="Portfolio">
-        <div class="Portfolio-section text-center">
-            <h2><span> </span>CV<span> </span></h2>
+                    {% block exp %}{% endblock %}
+                    <div class="clear"> </div>
+
+                </div>
+                <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
+
+            </div>
         </div>
+
+    </div>
+
+    <!------Content Ends-------->
+    <!------FOOTER Starts----------->
+    <div  id="contact" class="footer">
         <div class="container">
-            <div class="portfolio-grids">
-
-            {% block exp %}{% endblock %}
-            <div class="clear"> </div>
-
-        </div>
-        <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
-
-    </div>
-</div>
-
-</div>
-
-<!------Content Ends-------->
-<!------FOOTER Starts----------->
-<div  id="contact" class="footer">
-    <div class="container">
-        <div class="contact-section text-center">
-            <h2><span> </span>CONTACT<span> </span></h2>
-        </div>
-        <div class="row"> 
-            <div class="col-md-6">
-                <div class="footer-left">
-                    <div class="social-icons">
-                        <a href="#"><img src="{{ asset ('images/in.png') }}"></a>
-                        <a href="#"><img src="{{ asset ('images/twt.png') }}"></a>
-                        <a href="#"><img src="{{ asset ('images/fb.png') }}"></a>
-                    </div>
-                    <p>
-                    {% block txtmail %}{% endblock %}
-
-                </p>
+            <div class="contact-section text-center">
+                <h2><span> </span>CONTACT<span> </span></h2>
             </div>
-        </div>
+            <div class="row"> 
+                <div class="col-md-6">
+                    <div class="footer-left">
+                        <div class="social-icons">
+                            <a href="#"><img src="{{ asset ('images/in.png') }}"></a>
+                            <a href="#"><img src="{{ asset ('images/twt.png') }}"></a>
+                            <a href="#"><img src="{{ asset ('images/fb.png') }}"></a>
+                        </div>
+                        <p>
+                        {% block txtmail %}{% endblock %}
 
-        <div class="col-md-6">
-            <div class="footer-right">
-                <div class="form">
-                    <form>
-                        <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                    this.value = 'Name';
-                                }">
-                        <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                    this.value = 'E-mail';
-                                }">
-                        <textarea rows="2" cols="70" onfocus="if (this.value == 'Your Message')
-                                    this.value = '';" onblur="if (this.value == '')
-                                                this.value = 'Your Message';" >Your Message</textarea>
-                        <div class="clear"> </div>
-                        <input type="submit" value="SEND"> 
-                    </form>
+                    </p>
                 </div>
             </div>
-            <div class="clear"></div>
-            <p class="copy-right"> &copy; 2016 SYMFONY3 ZEND2 | Eric Martin</a></p>
+
+            <div class="col-md-6">
+                <div class="footer-right">
+                    <div class="form">
+                        <form>
+                            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'Name';
+                                    }">
+                            <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                        this.value = 'E-mail';
+                                    }">
+                            <textarea rows="2" cols="70" onfocus="if (this.value == 'Your Message')
+                                        this.value = '';" onblur="if (this.value == '')
+                                                    this.value = 'Your Message';" >Your Message</textarea>
+                            <div class="clear"> </div>
+                            <input type="submit" value="SEND"> 
+                        </form>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p class="copy-right"> &copy; 2016 SYMFONY3 ZEND2 | Eric Martin</a></p>
+            </div>
         </div>
     </div>
-</div>
-<a class="up scroll" href="{{ path ('home') }}#top-top"><span> </span></a>  
+    <a class="up scroll" href="{{ path ('home') }}#top-top"><span> </span></a>  
 </div>
 </body>
 </html>

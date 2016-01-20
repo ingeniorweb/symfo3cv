@@ -10,12 +10,54 @@ namespace ResumeBundle\Repository;
  */
 class ExperienceRepository extends \Doctrine\ORM\EntityRepository {
 
-    public function getLastExp() {
+    public function getLastExp($limit) {
 
 
         $qb = $this->createQueryBuilder("e")
                 ->where('e.active = TRUE')
+                ->andWhere('e.formation = FALSE')
+                ->orderBy('e.fin', 'DESC')
+                ->setMaxResults($limit);
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
+    public function getAllExp() {
+
+
+        $qb = $this->createQueryBuilder("e")
+                ->where('e.active = TRUE')
+                ->andWhere('e.formation = FALSE')
                 ->orderBy('e.fin', 'DESC');
+
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
+    public function getAllFormation() {
+
+
+        $qb = $this->createQueryBuilder("e")
+                ->where('e.active = TRUE')
+                ->andWhere('e.formation = TRUE')
+                ->orderBy('e.fin', 'DESC');
+
+
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
+
+    public function getExpBySkill($skill) {
+
+
+        $qb = $this->createQueryBuilder("e")
+                ->where('e.active = TRUE')
+                ->andWhere('e.formation = FALSE')
+                ->innerJoin('e.skills p WITH u.id > 3')
+                ->orderBy('e.fin', 'DESC');
+
 
         $query = $qb->getQuery();
         return $query->getResult();

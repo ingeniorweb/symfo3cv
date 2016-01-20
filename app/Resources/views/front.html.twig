@@ -34,9 +34,10 @@
                     <!------Navigation starts--------->
                     <div class="nav">
                         <ul>
-                            <li><a class="scroll" href="{{ path ('home') }}#about">ABOUT</a></li>
+
                             <li><a class="scroll" href="{{ path ('home') }}#skills">SKILLS</a></li>
-                            <li><a class="scroll" href="{{ path ('home') }}#port">PORTFOLIO</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}#port">ACTU</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">CV</a></li>
                             <li><a class="scroll" href="{{ path ('home') }}#contact">CONTACT</a></li>
 
                             {% if app.user == NULL %}
@@ -73,7 +74,7 @@
                         <p>
                         {% block txt02 %}{% endblock %}
                     </p>
-                    <a class="downarrow scroll" href="{{ path ('home') }}#about"><span> </span></a>
+                    <a class="downarrow scroll" href="{{ path ('home') }}#skills"><span> </span></a>
                 </div>
             </div>
             <div class="clear"></div>
@@ -85,22 +86,7 @@
 <!------Content starts--------->
 <div class="content">
     <!------About starts--------->
-    <div id="about" class="about">
-        <div class="container">
-            <div class="header-section text-center">
-                <h2><span> </span>ABOUT<span> </span></h2>
-            </div>
-            <span><p>{% block body %}
 
-                    {% endblock %}
-                    </p></span>
-                {% block lastexp %}{% endblock %}
-
-
-
-            <a class="arrow scroll" href="{{ path ('home') }}#skills"><span> </span></a>
-        </div>
-    </div>
     <!------About Ends--------->
 
     <!------SKILLS Starts--------->
@@ -151,7 +137,7 @@
 <!------PORTFOLIO Starts--------->
 <div id="port" class="Portfolio">
     <div class="Portfolio-section text-center">
-        <h2><span> </span>CV<span> </span></h2>
+        <h2><span> </span>DERNIERES EXPERIENCES<span> </span></h2>
     </div>
     <div class="container">
         <div class="portfolio-grids">
@@ -159,6 +145,9 @@
         {% block exp %}{% endblock %}
         <div class="clear"> </div>
 
+    </div>
+    <div class="Portfolio-section text-center">
+        <h2><span> </span>...<span> </span></h2>
     </div>
     <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
 </div>
