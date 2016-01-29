@@ -29,15 +29,28 @@
                 <!------container starts--------->
                 <div class="container">
                     <div class="logo">
-                        <a href="#">Resume</a>
+                        <a href="{{ path ('home') }}">ERIC MARTIN</a>
                     </div>
                     <!------Navigation starts--------->
                     <div class="nav">
                         <ul>
-                            <li><a class="scroll" href="#about">ABOUT</a></li>
-                            <li><a class="scroll" href="#skills">SKILLS</a></li>
-                            <li><a class="scroll" href="#port">PORTFOLIO</a></li>
-                            <li><a class="scroll" href="#contact">CONTACT</a></li>
+
+                            <li><a class="scroll" href="{{ path ('home') }}#skills">SKILLS</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}#port">ACTU</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}">CV</a></li>
+                            <li><a class="scroll" href="{{ path ('home') }}#contact">CONTACT</a></li>
+
+                            {% if app.user == NULL %}
+                                <li><a href="{{ path ('fos_user_security_login') }}">LOGIN</a></li>
+                                {% else %}
+
+                                <li><a href="{{ path ('fos_user_profile_show') }}">HEY! {{ app.user.username }}</a></li>
+                                <li><a href="{{ path ('fos_user_security_logout') }}">LOGOUT</a></li>
+                                {% endif %}
+                                {% if is_granted('ROLE_ADMIN') %}
+
+                                <li><a href="{{ path ('admin_experiences_index') }}">ADMIN</a></li>
+                                {% endif %}
                         </ul>
                     </div>
                     <!------Navigation ends-------->
@@ -61,7 +74,7 @@
                         <p>
                         {% block txt02 %}{% endblock %}
                     </p>
-                    <a class="downarrow scroll" href="#about"><span> </span></a>
+                    <a class="downarrow scroll" href="{{ path ('home') }}#skills"><span> </span></a>
                 </div>
             </div>
             <div class="clear"></div>
@@ -73,22 +86,7 @@
 <!------Content starts--------->
 <div class="content">
     <!------About starts--------->
-    <div id="about" class="about">
-        <div class="container">
-            <div class="header-section text-center">
-                <h2><span> </span>ABOUT<span> </span></h2>
-            </div>
-            <span><p>{% block body %}
 
-                    {% endblock %}
-                    </p></span>
-                {% block lastexp %}{% endblock %}
-
-
-
-            <a class="arrow scroll" href="#skills"><span> </span></a>
-        </div>
-    </div>
     <!------About Ends--------->
 
     <!------SKILLS Starts--------->
@@ -115,14 +113,14 @@
                 ];
                 for (var i = 1; i <= 5; i++) {
                     var child = document.getElementById('circles-' + i),
-                            percentage = 50 + (i * 10);
+                            percentage = i;
 
                     Circles.create({
                         id: child.id,
                         percentage: percentage,
                         radius: 80,
                         width: 15,
-                        number: percentage / 10,
+                        number: percentage,
                         text: '%',
                         colors: colors[i - 1]
                     });
@@ -139,7 +137,7 @@
 <!------PORTFOLIO Starts--------->
 <div id="port" class="Portfolio">
     <div class="Portfolio-section text-center">
-        <h2><span> </span>PORTFOLIO<span> </span></h2>
+        <h2><span> </span>DERNIERES EXPERIENCES<span> </span></h2>
     </div>
     <div class="container">
         <div class="portfolio-grids">
@@ -148,7 +146,10 @@
         <div class="clear"> </div>
 
     </div>
-    <a class="portdown scroll" href="#contact"><span> </span></a>	  
+    <div class="Portfolio-section text-center">
+        <h2><span> </span>...<span> </span></h2>
+    </div>
+    <a class="portdown scroll" href="{{ path ('home') }}#contact"><span> </span></a>	  
 </div>
 </div>
 </div>
@@ -167,38 +168,37 @@
                         <a href="#"><img src="{{ asset ('images/twt.png') }}"></a>
                         <a href="#"><img src="{{ asset ('images/fb.png') }}"></a>
                     </div>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem
-                        quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh
-                        id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
-                        Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-                        ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit.</p>
-                </div>
-            </div>
+                    <p>
+                    {% block txtmail %}{% endblock %}
 
-            <div class="col-md-6">
-                <div class="footer-right">
-                    <div class="form">
-                        <form>
-                            <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'Name';
-                                    }">
-                            <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                        this.value = 'E-mail';
-                                    }">
-                            <textarea rows="2" cols="70" onfocus="if (this.value == 'Your Message')
-                                        this.value = '';" onblur="if (this.value == '')
-                                                    this.value = 'Your Message';" >Your Message</textarea>
-                            <div class="clear"> </div>
-                            <input type="submit" value="SEND"> 
-                        </form>
-                    </div>
-                </div>
-                <div class="clear"></div>
-                <p class="copy-right"> &copy; 2014 Resume. All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+                </p>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="footer-right">
+                <div class="form">
+                    <form>
+                        <input type="text" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'Name';
+                                }">
+                        <input type="text" class="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {
+                                    this.value = 'E-mail';
+                                }">
+                        <textarea rows="2" cols="70" onfocus="if (this.value == 'Your Message')
+                                    this.value = '';" onblur="if (this.value == '')
+                                                this.value = 'Your Message';" >Your Message</textarea>
+                        <div class="clear"> </div>
+                        <input type="submit" value="SEND"> 
+                    </form>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <p class="copy-right"> &copy; 2016 SYMFONY3 ZEND2 | Eric Martin</a></p>
+        </div>
     </div>
-    <a class="up scroll" href="#top-top"><span> </span></a>  
+</div>
+<a class="up scroll" href="{{ path ('home') }}#top-top"><span> </span></a>  
 </div>
 </body>
 </html>

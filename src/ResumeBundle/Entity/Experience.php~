@@ -3,7 +3,7 @@
 namespace ResumeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use CvBundle\Entity\skill;
+use ResumeBundle\Entity\Skill;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -29,6 +29,13 @@ class Experience {
      * @ORM\Column(name="entreprise", type="string", length=255)
      */
     private $entreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poste", type="string", length=255)
+     */
+    private $poste;
 
     /**
      * @var \DateTime
@@ -71,6 +78,13 @@ class Experience {
      * @ORM\Column(name="active", type="boolean")
      */
     private $active;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="formation", type="boolean")
+     */
+    private $formation;
 
 
 

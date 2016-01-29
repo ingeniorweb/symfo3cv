@@ -21,6 +21,7 @@ class ExperienceType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('entreprise')
+                ->add('poste')
 //                ->add('date', 'date')
                 ->add('debut', DateType::class, array(
                     'input' => 'datetime',
@@ -33,6 +34,7 @@ class ExperienceType extends AbstractType {
                 ->add('description')
                 ->add('image')
                 ->add('active')
+                ->add('formation')
 //                ->add('skills')
                 ->add('skills', EntityType::class, array('class' => 'ResumeBundle:Skill',
                     'choice_label' => 'nom', 'multiple' => true, 'expanded' => true))

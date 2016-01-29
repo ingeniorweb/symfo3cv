@@ -1,0 +1,52 @@
+{% extends 'detail.html.twig' %}
+
+
+
+{% block skills %}
+
+    {% for skill in skills %}
+
+        <div class="col-md-3">	
+            <div class="skill-grid">
+                <div class="circle" id="circles-{{ skill.niveau }}"></div>									
+                <h3>{{ skill.nom }}</h3>	
+            </div>								  
+        </div>
+    {% endfor %}
+    <div class="clearfix"> </div>
+{% endblock %}
+
+{% block exp %}
+    {% for exp in experiences %}
+        <div class="portfolio-grid col-md-12">
+            <a href="#"><img src="{{ asset ('images/1.jpg') }}"></a>
+
+            <span><h3>{{ exp.poste }}</h4></span>
+            <span><h2>{{ exp.entreprise }}</h3></span>
+            <p>{{ exp.debut|date('m-Y') }} / {{ exp.fin|date('m-Y') }}</p>
+            <p>{{ exp.description }}</p>
+
+            {% for skill in skills %}
+
+                <div class="col-md-3">	
+
+
+                    <h2>{{ skill.nom }}</h2>	
+
+                </div>
+            {% endfor %}
+            <div class="clearfix"> </div>
+
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+
+{% block txtmail %}
+    {% for texte in textes %}
+        {% if texte.titre == 'txtmail' %}
+            {{ texte.description }}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
